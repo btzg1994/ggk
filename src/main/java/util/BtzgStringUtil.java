@@ -198,17 +198,18 @@ public class BtzgStringUtil {
 	}
 	
 	
+	
 	public static void main(String[] args) {
 		
 		char[] chars = {'3','4','5','6','7','8','9',
 						'a','b','c','d','e','f','g','h','i','j','k','m','n','p','q','r','s','t','u','v','w','x','y',
 						'A','B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','S','T','U','V','W','X','Y'};
 		int length = 8;
-		int count = 68500;
+		int count = 500;
 		HashSet<String> randomStr = BtzgStringUtil.randomStr(length, count, chars);
 		
 		File file1 = new File("D:/code.txt");
-		File file2 = new File("D:/encryption.txt");
+//		File file2 = new File("D:/encryption.txt");
 		if(!file1.exists()){
 			try {
 				file1.createNewFile();
@@ -216,21 +217,21 @@ public class BtzgStringUtil {
 				e.printStackTrace();
 			}
 		}
-		if(!file2.exists()){
-			try {
-				file2.createNewFile();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
+//		if(!file2.exists()){
+//			try {
+//				file2.createNewFile();
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//		}
 		
-		String salt = "3d9481b585e3d6391a9646c880be6c7a";
+//		String salt = "3d9481b585e3d6391a9646c880be6c7a";
 		for (String string : randomStr) {
 			try {
 				FileUtils.write(file1, string+"\n", true);
 				
-				String encryption = HashUtils.md5(string+salt);
-				FileUtils.write(file2, encryption+"\n", true);
+//				String encryption = HashUtils.md5(string+salt);
+//				FileUtils.write(file2, encryption+"\n", true);
 				
 			} catch (Exception e) {
 				e.printStackTrace();

@@ -20,6 +20,8 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 
 import com.google.code.kaptcha.servlet.KaptchaServlet;
 
+import me.ffs.www.control.interceptor.AccessInterceptor;
+import me.ffs.www.control.interceptor.BackLoginInterceptor;
 import me.ffs.www.control.interceptor.UserSecurityInterceptor;
 
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -57,7 +59,9 @@ public class ApplicationConfigurerAdapter  implements WebMvcConfigurer {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-//        registry.addInterceptor(new UserSecurityInterceptor()).addPathPatterns("/**","/pay/**","/ql/**");
+    	
+        registry.addInterceptor(new AccessInterceptor()).addPathPatterns("/**").excludePathPatterns("/resources/**");
+        registry.addInterceptor(new BackLoginInterceptor()).addPathPatterns("/b/sign/**");
     }
 
 }
